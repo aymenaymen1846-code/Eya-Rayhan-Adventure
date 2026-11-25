@@ -24,8 +24,8 @@ jobs:
 
     - name: Unzip Project
       run: |
-        # فك ضغط المشروع الذي قمت برفعه
-        unzip -q EyaRayhanAdventure-AndroidProject*.zip -d project
+        # البحث عن أي ملف يبدأ بهذا الاسم وفك ضغطه (حتى لو كان به مسافات أو أرقام)
+        find . -name "EyaRayhanAdventure-AndroidProject*.zip" -exec unzip -q {} -d project \;
         # إعطاء صلاحية التنفيذ لملف gradlew
         find project -name gradlew -exec chmod +x {} \;
 
