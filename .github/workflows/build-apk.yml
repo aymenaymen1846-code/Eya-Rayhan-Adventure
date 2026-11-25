@@ -24,14 +24,11 @@ jobs:
 
     - name: Unzip Project
       run: |
-        # البحث عن أي ملف يبدأ بهذا الاسم وفك ضغطه (حتى لو كان به مسافات أو أرقام)
         find . -name "EyaRayhanAdventure-AndroidProject*.zip" -exec unzip -q {} -d project \;
-        # إعطاء صلاحية التنفيذ لملف gradlew
         find project -name gradlew -exec chmod +x {} \;
 
     - name: Build APK
       run: |
-        # الدخول إلى مجلد المشروع وبناء التطبيق
         cd $(find project -name gradlew -printf '%h\n' | head -n 1)
         ./gradlew assembleDebug --no-daemon
 
